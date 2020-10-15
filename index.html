@@ -5,54 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Conversão Temperatura</title>
+    <title>Conversão</title>
 </head>
 
 <body>
 
-    <form id="formtemperatura">
+    <form id="formTemperatura">
         <input type="text" required name="temperatura" id="temperatura">
         <input type="checkbox"  id="celcius" name="temperatura">Celcius</checkbox>
-        <input type="checkbox"  id="fahrenheit" name="temperatura">Fahrenheit</checkbox>
-        <button type="submit" id="btnConverter">Converter</button>
+        <input type="checkbox" id="fahrenheit" name="temperatura">Fahrenheit</checkbox>
+        <input type="submit" id="btnConverter">Converter</button>
     </form>
 
     <script>
-        //Pega o elemento do documento pelo id utilizando .getElementById.
-        let temperatura = document.getElementById("temperatura");
-        //Exibe no console as informações do elemento selecionado.
-        console.log(temperatura);
+        let temperatura = document.querySelector('#temperatura');
+        let celcius = document.querySelector('#celcius');
+        let fahrenheit = document.querySelector('#fahrenheit');
+        let btnConverter = document.querySelector('#btnConverter');
 
-        //Pega o elemento do documento pela sua classe utilizando .querySelector.
-        //Pelo id = #nomedoiddoelemento
-        //Pela classe = .nomedaclassdoelemento
-        let celcius     = document.querySelector("#celcius");
-        console.log(celcius);
+        btnConverter.addEventListener('click', converter);
 
-        //Pega o elemento do documento pela sua classe utilizando .querySelector.
-        let fahrenheit  = document.querySelector("#fahrenheit");
-        console.log(fahrenheit);
+        function converter(event){
 
-        let btnConverter = document.getElementById("btnConverter");
-        console.log(btnConverter)
-        
-        btnConverter.addEventListener("click", converter);
-
-        function converter(event)
-        {
             event.preventDefault();
 
             if(!celcius.checked && !fahrenheit.checked){
-                alert('Informe um tipo de conversão!');
-            } else if (celcius.checked){
-                alert(((temperatura.value - 32) * 5) / 9);
-            } else {
-                alert(((temperatura.value * 9) / 5) + 32);
-            }     
+               alert('Informe o tipo de conversão');
+           } else if(celcius.checked){
+               alert((temperatura.value - 32) * 5 / 9);
+           } else{
+               alert((temperatura.value * 9 / 5) + 32);
+           }
         }
-    
-
-
     </script>
 
 </body>
